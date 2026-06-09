@@ -13,6 +13,9 @@ def main():
         "-S", action="store_true", help="stop at generating assembly"
     )
     build_parser.add_argument(
+        "-v", action="store_true", help="show thinking output and assembly code"
+    )
+    build_parser.add_argument(
         "-o", dest="outfile", metavar="OUTPUT", help="set an output file"
     )
 
@@ -35,7 +38,7 @@ def main():
             print("\033[91mFile is empty or an internal error occured.\033[0m")
             sys.exit(1)
 
-        asm = build.output_asm(key, code)
+        asm = build.output_asm(key, code, args.v)
 
         # Stop at generating assembly; same as in GCC
         if args.S:
@@ -45,7 +48,7 @@ def main():
         # Default output file is a.out; same as in GCC
         outfile = args.outfile or "a.out"
 
-        build.compile_to_outfile(code, outfile)
+        build.compile_to_outfile(asm, outfile)
 
     elif args.command is None:
         parser.print_help()

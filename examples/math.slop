@@ -1,0 +1,3 @@
+function * two_plus_two() {
+    w("%d", 2+2)
+}

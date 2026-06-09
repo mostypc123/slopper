@@ -1,0 +1,14 @@
+&module examples/math.slop
+
+string** argv
+int argc
+
+if (argc == 1) {
+    wln("Hello World!")
+} whatever {
+    if (argv[1] == "math") {
+        two_plus_two()
+    } whatever {
+        wln("Unknown argument: %s", argv[1])
+    }
+}
