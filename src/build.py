@@ -74,6 +74,9 @@ def get_user_api_key() -> str:
         print(
             "Go to \033[1mhttps://dashboard.cohere.com/api-keys\033[0m and create one."
         )
+        print(
+            "\033[93mWarning: the API key is stored in a local file (~/.config/cohere_key). Please be careful\033[0m"
+        )
         key = input("Then copy it here: ")
         with open(os.path.expanduser("~/.config/cohere_key"), "w") as key_file:
             key_file.write(key)
